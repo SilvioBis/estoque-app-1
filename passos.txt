@@ -1,0 +1,25 @@
+1) Criar o aplicativo
+
+2) Criar o serviço (service) (ionic generate service pasta/nome)
+
+3) Importar o HttpClientModule no app.module.ts (app.component.ts)
+
+4) Injetar o HttpClient no construtor do Serviço (todos)
+
+5) Criar a variavel para guardar a URL do Endpoint no Serviço (todos)
+npm start no servidor para ver o link
+
+6) Criar os métodos do CRUD no Serviço (se for de Tabela) (todos)
+
+7) Criar os demais métodos necesários no Serviço (todos)
+
+8) Criar a classe ou interface para os dados a serem trabalhados.
+
+9) Injetar o serviço na página que deseja consumir a API
+
+10) Criar o método na página que vai interagir com o método do serviço
+
+11) Exibir os dados na página.
+
+
+*Toda vez que tiver dados tem um serviço.
