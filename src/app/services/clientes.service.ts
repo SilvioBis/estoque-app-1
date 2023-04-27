@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http'
 import { Cliente } from '../models/Cliente.model';
 import { catchError, EMPTY, map, Observable } from 'rxjs';
 
+import { AlertController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class ClientesService {
 
   url = 'http://localhost:3000/clientes';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private alertController: AlertController) { }
 
   create (cliente: Cliente){
     return this.http.post(this.url, cliente);
@@ -42,9 +43,20 @@ export class ClientesService {
   logout (){}
 
   exibirErro(erro: any):Observable<any>{
-    alert('Deu erro!');
-    console.log(erro);
+    const titulo = `Erro na conexão!`;
+    const msg = `verifique sua conexão \n ou \n Informe esse erro ao suporte ${erro.status}`; 
+    this.presentAlert(titulo, msg);
     return EMPTY;
+  }
+
+  async presentAlert(titulo: string, msg: string) {
+    const alert = await this.alertController.create({
+      header: titulo,
+      message: msg,
+      buttons: ['OK'],
+    });
+
+    await alert.present();
   }
 
 }
