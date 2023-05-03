@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Produto } from '../models/Produto.Model';
 import { HttpClient } from '@angular/common/http';
@@ -11,8 +12,8 @@ export class ProdutosService {
 
   constructor(private http: HttpClient) { }
 
-  create (produto: Produto){
-    return this.http.post(this.url, produto);
+  create (produto: Produto):Observable<Produto>{
+    return this.http.post<Produto>(this.url, produto);
   }
 
   getAll (){

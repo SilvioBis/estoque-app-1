@@ -14,8 +14,11 @@ export class ClientesService {
 
   constructor(private http: HttpClient, private alertController: AlertController) { }
 
-  create (cliente: Cliente){
-    return this.http.post(this.url, cliente);
+  create (cliente: Cliente):Observable<Cliente>{
+    return this.http.post<Cliente>(this.url, cliente).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibirErro(erro))
+    );
   }
 
   getAll ():Observable<Cliente[]> {
@@ -44,7 +47,7 @@ export class ClientesService {
 
   exibirErro(erro: any):Observable<any>{
     const titulo = `Erro na conexão!`;
-    const msg = `verifique sua conexão \n ou \n Informe esse erro ao suporte ${erro.status}`; 
+    const msg = `verifique sua conexão \n ou \n Informe esse erro ao suporte ${erro.status}`;
     this.presentAlert(titulo, msg);
     return EMPTY;
   }
