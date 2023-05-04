@@ -17,6 +17,9 @@ export class HomePage {
   listaClientes: Cliente[] = [];
 
   constructor(private clientesService: ClientesService,private router: Router) {
+  }
+
+  ionViewWillEnter(){
     this.buscarClientes();
   }
 
