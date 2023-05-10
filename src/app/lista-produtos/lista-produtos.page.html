@@ -11,6 +11,12 @@
       <p>{{produto.descricao}}</p>
       <p>{{produto.preco | currency:'BRL'}}</p>
     </ion-label>
+    <ion-button color="warning" (click)="alterarProduto(produto.id!)">
+      <ion-icon slot="icon-only" name="create"></ion-icon>
+    </ion-button>
+    <ion-button color="danger" (click)="excluirProduto(produto.id!)">
+      <ion-icon slot="icon-only" name="trash"></ion-icon>
+    </ion-button>
   </ion-item>
 
   <ion-button expand="block" routerLink="/create-produtos">
